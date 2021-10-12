@@ -26,7 +26,7 @@ public abstract class GameObject {
     }
 
 
-    public abstract void update(float delta);
+    public abstract void update();
 
     public abstract void render(Graphics graphics);
 }
