@@ -1,0 +1,11 @@
+<map>
+<!--    <background type="img">myBackgroundImageName</background> -->
+    <background type="color">white</background>
+    <resources>
+        <resource>img-player-front</resource>
+        <resource from="spritesheet-tiles1" x="0" y="2">tile-ground</resource>
+        <resource from="spritesheet-tiles1" x="1" y="3">tile-grass</resource>
+        <resource from="spritesheet-tiles1" x="0" y="0">tile-wall</resource>
+        <resource>sound-shout1</resource>
+    </resources>
+</map>

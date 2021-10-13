@@ -1,0 +1,29 @@
+<world>
+    <!-- Units specify the size of a tile -->
+    <unit>40</unit>
+
+    <!-- Resources can be accessed by their name from within the Engine -->
+    <resources>
+        <resource name="map1" type="game-map">
+            <path sys="windows">C:\Benutzer\bla\MyMap1.xml</path>
+            <path sys="mac">/Users/julian/Desktop/MyMap1.xml</path>
+        </resource>
+        <resource name="lolmap" type="game-map">
+            <path sys="windows">C:\Benutzer\bla\lolmap.xml</path>
+            <path sys="mac">/Users/julian/Desktop/lolmap1.xml</path>
+        </resource>
+
+        <resource name="img-player-front" type="img">
+            <path sys="windows">C:\Benutzer\bla\resources\player_front.png</path>
+            <path sys="mac">/Users/julian/Desktop/res/player_front.png</path>
+        </resource>
+        <resource name="spritesheet-tiles1" type="sprite-sheet" tile-width="32" tile-height="32">
+            <path sys="windows">C:\Benutzer\bla\resources\tiles.png</path>
+            <path sys="mac">/Users/julian/Desktop/res/tiles.png</path>
+        </resource>
+
+        <resource name="sound-shout1" type="sound">
+            <path type="relative" to="game-config-path">res/shout1.wav</path>
+        </resource>
+    </resources>
+</world>
