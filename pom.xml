@@ -6,7 +6,7 @@
 
     <groupId>com.progen.games</groupId>
     <artifactId>SimpleRpg</artifactId>
-    <version>0.2</version>
+    <version>0.3-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
