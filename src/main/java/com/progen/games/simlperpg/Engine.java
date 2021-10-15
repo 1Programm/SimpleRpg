@@ -32,13 +32,12 @@ public class Engine implements IContext {
         if(running) return;
         running = true;
 
+        window.setVisible(true);
         new Thread(this::run).start();
     }
 
     private void init(){
-        objs.add(new TestObject());
-
-        window.setVisible(true);
+        objs.add(new TestObject(10, 10, 100, 200));
     }
 
     private void run() {
