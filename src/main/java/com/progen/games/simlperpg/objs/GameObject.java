@@ -16,6 +16,5 @@ public abstract class GameObject {
     protected float width, height;
 
     public abstract void update(IContext ctx);
-
     public abstract void render(Graphics g);
 }

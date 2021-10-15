@@ -3,6 +3,8 @@ package com.progen.games.simlperpg;
 import com.progen.games.simlperpg.controlls.Controls;
 import com.progen.games.simlperpg.engine.IContext;
 import com.progen.games.simlperpg.gfx.IWindow;
+import com.progen.games.simlperpg.msg.IMessageHandler;
+import com.progen.games.simlperpg.msg.MessageStack;
 import com.progen.games.simlperpg.objs.GameObject;
 import com.progen.games.simlperpg.world.GameWorld;
 import com.progen.games.simlperpg.world.IWorld;
@@ -13,11 +15,12 @@ import java.util.List;
 @Slf4j
 public class Engine implements IContext {
 
-    private final static boolean DEBUG_PRINT_FPS = true;
+    private final static boolean DEBUG_PRINT_FPS = false;
 
     private final Window window;
     private final Controls controls;
     private final GameWorld world;
+    private final MessageStack messages;
 
     private boolean running;
 
@@ -25,6 +28,7 @@ public class Engine implements IContext {
         this.window = new Window(title, width, height);
         this.controls = new Controls(window.getKeyListener(), window.getMouseListener());
         this.world = new GameWorld();
+        this.messages = new MessageStack();
     }
 
     public void start() {
@@ -85,6 +89,7 @@ public class Engine implements IContext {
     }
 
     private void update() {
+        messages.handleMessages();
         world.update(this);
     }
 
@@ -106,5 +111,10 @@ public class Engine implements IContext {
     @Override
     public IWorld world() {
         return world;
+    }
+
+    @Override
+    public IMessageHandler messages() {
+        return messages;
     }
 }

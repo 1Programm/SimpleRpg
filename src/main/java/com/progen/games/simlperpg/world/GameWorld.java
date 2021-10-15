@@ -2,6 +2,8 @@ package com.progen.games.simlperpg.world;
 
 import com.progen.games.simlperpg.engine.IContext;
 import com.progen.games.simlperpg.objs.GameObject;
+import com.progen.games.simlperpg.objs.MsgDude1;
+import com.progen.games.simlperpg.objs.MsgDude2;
 import com.progen.games.simlperpg.objs.TestObject;
 
 import java.awt.*;
@@ -13,7 +15,8 @@ public class GameWorld implements IWorld {
     private final List<GameObject> objs = new ArrayList<>();
 
     public void init(){
-        objs.add(new TestObject(10, 10, 100, 200));
+        objs.add(new MsgDude1(10, 10, 50, 50));
+        objs.add(new MsgDude2(70, 10, 50, 50));
     }
 
     public void update(IContext ctx){
