@@ -1,5 +1,9 @@
 package com.progen.games.simlperpg.msg;
 
+/**
+ * A message.
+ * This interface should be implemented as a way to define data between multiple objects, so that they can send that information between them.
+ */
 public interface IMessage {
 
     /**
