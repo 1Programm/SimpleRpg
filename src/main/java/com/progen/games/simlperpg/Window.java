@@ -5,6 +5,7 @@ import com.progen.games.simlperpg.controlls.IKeyboard;
 import com.progen.games.simlperpg.controlls.IMouse;
 import com.progen.games.simlperpg.gfx.IWindow;
 import com.progen.games.simlperpg.objs.GameObject;
+import com.progen.games.simlperpg.world.GameWorld;
 
 import javax.swing.*;
 import java.awt.*;
@@ -149,7 +150,7 @@ public class Window extends JFrame implements IWindow {
         this.setLocationRelativeTo(null);
     }
 
-    public void render(List<GameObject> objs){
+    public void render(GameWorld world, List<GameObject> objs){
         BufferStrategy bs = canvas.getBufferStrategy();
 
         if(bs == null){
@@ -159,8 +160,11 @@ public class Window extends JFrame implements IWindow {
 
         Graphics g = bs.getDrawGraphics();
 
+        //TODO: Remove this and let the currently loaded map inside GameWorld decide what the background is.
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+        world.render(g);
 
         for(int i=0;i<objs.size();i++){
             objs.get(i).render(g);

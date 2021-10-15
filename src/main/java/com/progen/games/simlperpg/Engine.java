@@ -4,28 +4,27 @@ import com.progen.games.simlperpg.controlls.Controls;
 import com.progen.games.simlperpg.engine.IContext;
 import com.progen.games.simlperpg.gfx.IWindow;
 import com.progen.games.simlperpg.objs.GameObject;
-import com.progen.games.simlperpg.objs.TestObject;
+import com.progen.games.simlperpg.world.GameWorld;
+import com.progen.games.simlperpg.world.IWorld;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 public class Engine implements IContext {
 
-    private final static String TITLE = "Simple RPG Game";
-    private final static int WIDTH = 800, HEIGHT = WIDTH / 12 * 9;
     private final static boolean DEBUG_PRINT_FPS = true;
 
     private final Window window;
     private final Controls controls;
-    private final List<GameObject> objs = new ArrayList<>();
+    private final GameWorld world;
 
     private boolean running;
 
-    public Engine() {
-        this.window = new Window(TITLE, WIDTH, HEIGHT);
+    public Engine(String title, int width, int height) {
+        this.window = new Window(title, width, height);
         this.controls = new Controls(window.getKeyListener(), window.getMouseListener());
+        this.world = new GameWorld();
     }
 
     public void start() {
@@ -37,7 +36,7 @@ public class Engine implements IContext {
     }
 
     private void init(){
-        objs.add(new TestObject(10, 10, 100, 200));
+        world.init();
     }
 
     private void run() {
@@ -86,13 +85,12 @@ public class Engine implements IContext {
     }
 
     private void update() {
-        for(int i=0;i<objs.size();i++){
-            objs.get(i).update(this);
-        }
+        world.update(this);
     }
 
     private void render() {
-        window.render(objs);
+        List<GameObject> visibleObjects = world.getVisibleObjects();
+        window.render(world, visibleObjects);
     }
 
     @Override
@@ -103,5 +101,10 @@ public class Engine implements IContext {
     @Override
     public Controls controls() {
         return controls;
+    }
+
+    @Override
+    public IWorld world() {
+        return world;
     }
 }
